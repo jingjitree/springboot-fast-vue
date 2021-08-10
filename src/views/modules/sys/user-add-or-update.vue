@@ -115,7 +115,7 @@
           method: 'get',
           params: this.$http.adornParams()
         }).then(({data}) => {
-          this.roleList = data && data.code === 0 ? data.list : []
+          this.roleList = data && data.code === 1 ? data.data.list : []
         }).then(() => {
           this.visible = true
           this.$nextTick(() => {
