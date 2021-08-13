@@ -57,10 +57,10 @@
         this.dataForm.id = id || 0
         this.$http({
           url: this.$http.adornUrl('/sys/menu/list'),
-          method: 'get',
-          params: this.$http.adornParams()
+          method: 'post',
+          data: this.$http.adornData()
         }).then(({data}) => {
-          this.menuList = treeDataTranslate(data, 'menuId')
+          this.menuList = treeDataTranslate(data.data, 'menuId')
         }).then(() => {
           this.visible = true
           this.$nextTick(() => {
@@ -77,7 +77,7 @@
               if (data && data.code === 1) {
                 this.dataForm.roleName = data.data.role.roleName
                 this.dataForm.remark = data.data.role.remark
-                var idx = data.role.menuIdList.indexOf(this.tempKey)
+                var idx = data.data.role.menuIdList.indexOf(this.tempKey)
                 if (idx !== -1) {
                   data.data.role.menuIdList.splice(idx, data.data.role.menuIdList.length - idx)
                 }

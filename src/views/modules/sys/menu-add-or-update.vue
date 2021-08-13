@@ -133,7 +133,7 @@
           method: 'get',
           params: this.$http.adornParams()
         }).then(({data}) => {
-          this.menuList = treeDataTranslate(data.menuList, 'menuId')
+          this.menuList = treeDataTranslate(data.data.menuList, 'menuId')
         }).then(() => {
           this.visible = true
           this.$nextTick(() => {
